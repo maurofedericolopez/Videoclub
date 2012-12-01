@@ -126,4 +126,21 @@ public class PeliculaController extends Observable {
         notificarCambios();
     }
 
+    public void registrarNuevoEjemplar(Pelicula pelicula, Double precioAlquiler) {
+        String codigoEjemplar = pelicula.getCodigo() + pelicula.getEjemplares().size();
+        pelicula.getEjemplares().add(new Ejemplar(codigoEjemplar, precioAlquiler, pelicula));
+        notificarCambios();
+    }
+
+    public void eliminarEjemplar(Pelicula pelicula, int[] indices) {
+        ArrayList<Ejemplar> ejemplares = new ArrayList();
+        for(int i = 0; i < indices.length; i++) {
+            ejemplares.add(pelicula.getEjemplares().get(indices[i]));
+        }
+        Iterator<Ejemplar> i = ejemplares.iterator();
+        while(i.hasNext())
+            pelicula.getEjemplares().remove(i.next());
+        notificarCambios();
+    }
+
 }

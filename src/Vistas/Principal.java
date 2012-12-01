@@ -206,7 +206,7 @@ public class Principal extends javax.swing.JFrame {
         agregarComponenteAlCentro(new GeneroUI());
     }//GEN-LAST:event_botonGenerosActionPerformed
 
-    private void agregarComponenteAlCentro(JComponent componente) {
+    public void agregarComponenteAlCentro(JComponent componente) {
         getContentPane().removeAll();
         add(jpBotones, BorderLayout.WEST);
         add(componente, BorderLayout.CENTER);

@@ -14,5 +14,10 @@ public class Prueba {
         String cadenaFecha = formato.format(fecha);
         System.out.println("Esta es la fecha actual");
         System.out.println(cadenaFecha);
+        System.out.println(Enumerado.PRIMERO.toString());
+    }
+
+    enum Enumerado {
+        PRIMERO, SEGUNDO, TERCER
     }
 }

@@ -13,6 +13,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 import videoclub.Controladores;
+import videoclub.VideoclubApp;
 
 /**
  *
@@ -302,6 +303,9 @@ public class PeliculaUI extends javax.swing.JPanel {
             int indice = tablaPeliculas.getSelectedRow();
             if(indice >= 0) {
                 Pelicula pelicula = controlador.obtenerPelicula(indice);
+                EjemplarUI ventanaEjemplar = new EjemplarUI();
+                ventanaEjemplar.setPelicula(pelicula);
+                VideoclubApp.principal.agregarComponenteAlCentro(ventanaEjemplar);
             }
             else
                 throw new Exception("No ha seleccionado ninguna película para ver sus ejemplares");

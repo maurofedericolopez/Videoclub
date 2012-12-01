@@ -17,7 +17,7 @@ public class Genero {
     @Override
     public String toString() {
         return nombre;
-    } 
+    }
 
     /**
      * @return the nombre

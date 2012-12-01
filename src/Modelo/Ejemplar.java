@@ -10,15 +10,15 @@ import java.io.Serializable;
 public class Ejemplar implements Serializable {
 
     private String codigo;
-    private EstadoEjemplar miEstado;
+    private EstadoEjemplar estado;
     private Double precioAlquiler;
-    private Pelicula miPelicula;
+    private Pelicula pelicula;
 
-    public Ejemplar(String codigo, Double precioAlquiler, Pelicula miPelicula) {
+    public Ejemplar(String codigo, Double precioAlquiler, Pelicula pelicula) {
         this.codigo = codigo;
         this.precioAlquiler = precioAlquiler;
-        this.miPelicula = miPelicula;
-        this.miEstado = EstadoEjemplar.DISPONIBLE;
+        this.pelicula = pelicula;
+        this.estado = EstadoEjemplar.DISPONIBLE;
     }
 
     /**
@@ -39,31 +39,52 @@ public class Ejemplar implements Serializable {
      * @return the estado
      */
     public EstadoEjemplar getEstado() {
-        return miEstado;
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(EstadoEjemplar estado) {
+        this.estado = estado;
     }
 
     /**
      * Cambia el estado de un ejemplar.
      */
     public void cambiarEstado() {
-        if(this.miEstado == EstadoEjemplar.ALQUILADO)
-            this.miEstado = EstadoEjemplar.DISPONIBLE;
+        if(this.getEstado() == EstadoEjemplar.ALQUILADO)
+            this.setEstado(EstadoEjemplar.DISPONIBLE);
         else
-            this.miEstado = EstadoEjemplar.ALQUILADO;
+            this.setEstado(EstadoEjemplar.ALQUILADO);
     }
 
     /**
-     * @return the miPelicula
+     * @return the pelicula
      */
-    public Pelicula getMiPelicula() {
-        return miPelicula;
+    public Pelicula getPelicula() {
+        return pelicula;
     }
 
     /**
-     * @param miPelicula the miPelicula to set
+     * @param pelicula the pelicula to set
      */
-    public void setMiPelicula(Pelicula miPelicula) {
-        this.miPelicula = miPelicula;
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+    }
+
+    /**
+     * @return the precioAlquiler
+     */
+    public Double getPrecioAlquiler() {
+        return precioAlquiler;
+    }
+
+    /**
+     * @param precioAlquiler the precioAlquiler to set
+     */
+    public void setPrecioAlquiler(Double precioAlquiler) {
+        this.precioAlquiler = precioAlquiler;
     }
 
 }

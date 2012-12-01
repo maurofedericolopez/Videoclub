@@ -1,20 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vistas;
+
+import Controladores.PeliculaController;
+import Modelo.Pelicula;
+import Vistas.modelos.EjemplaresPeliculaTableModel;
+import javax.swing.JOptionPane;
+import videoclub.Controladores;
+import videoclub.VideoclubApp;
 
 /**
  *
- * @author Mauro
+ * @author Mauro Federico Lopez
  */
 public class EjemplarUI extends javax.swing.JPanel {
+
+    private PeliculaController controlador;
+    private Pelicula pelicula;
 
     /**
      * Creates new form EjemplarUI
      */
     public EjemplarUI() {
         initComponents();
+        controlador = Controladores.peliculaController;
     }
 
     /**
@@ -28,8 +35,18 @@ public class EjemplarUI extends javax.swing.JPanel {
 
         etiquetaTitulo = new javax.swing.JLabel();
         panelDatos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jsp = new javax.swing.JScrollPane();
+        tablaEjemplares = new javax.swing.JTable();
+        campoCodigoPelicula = new javax.swing.JLabel();
+        campoTituloPelicula = new javax.swing.JLabel();
+        campoGeneroPelicula = new javax.swing.JLabel();
+        botonEliminarEjemplar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        etiquetaPrecioAlquiler = new javax.swing.JLabel();
+        campoPrecioAlquiler = new javax.swing.JFormattedTextField();
+        botonAgregar = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(750, 380));
         setMinimumSize(new java.awt.Dimension(750, 380));
@@ -43,18 +60,26 @@ public class EjemplarUI extends javax.swing.JPanel {
         panelDatos.setMaximumSize(new java.awt.Dimension(750, 351));
         panelDatos.setMinimumSize(new java.awt.Dimension(750, 351));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        tablaEjemplares.setModel(new Vistas.modelos.EjemplaresPeliculaTableModel());
+        tablaEjemplares.getTableHeader().setReorderingAllowed(false);
+        jsp.setViewportView(tablaEjemplares);
+
+        campoCodigoPelicula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoCodigoPelicula.setText("jLabel1");
+
+        campoTituloPelicula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoTituloPelicula.setText("jLabel2");
+
+        campoGeneroPelicula.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoGeneroPelicula.setText("jLabel3");
+
+        botonEliminarEjemplar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonEliminarEjemplar.setText("Eliminar Ejemplar");
+        botonEliminarEjemplar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarEjemplarActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
 
         javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
         panelDatos.setLayout(panelDatosLayout);
@@ -62,23 +87,156 @@ public class EjemplarUI extends javax.swing.JPanel {
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jsp, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(campoCodigoPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoTituloPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoGeneroPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addComponent(botonEliminarEjemplar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panelDatosLayout.setVerticalGroup(
             panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
+            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(campoCodigoPelicula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoTituloPelicula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoGeneroPelicula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonEliminarEjemplar)
+                .addGap(38, 38, 38))
         );
 
         add(panelDatos, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(183, 351));
+        jPanel1.setMinimumSize(new java.awt.Dimension(183, 351));
+
+        etiquetaPrecioAlquiler.setText("Precio Alquiler");
+
+        campoPrecioAlquiler.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+
+        botonAgregar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonAgregar.setText("Agregar");
+        botonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarActionPerformed(evt);
+            }
+        });
+
+        botonCancelar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonCancelar.setText("Cancelar");
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(etiquetaPrecioAlquiler)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonCancelar)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAgregar)
+                    .addComponent(botonCancelar))
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, java.awt.BorderLayout.LINE_END);
+
+        botonVolver.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+        add(botonVolver, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        Double precioAlquiler = ((Number) campoPrecioAlquiler.getValue()).doubleValue();
+        controlador.registrarNuevoEjemplar(pelicula, precioAlquiler);
+        limpiarCampos();
+    }//GEN-LAST:event_botonAgregarActionPerformed
+
+    private void botonEliminarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEjemplarActionPerformed
+        try {
+            int[] indices = tablaEjemplares.getSelectedRows();
+            if(indices.length > 0) {
+                controlador.eliminarEjemplar(pelicula, indices);
+            }
+            else
+                throw new Exception("No ha seleccionado ningun ejemplar para eliminar");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonEliminarEjemplarActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        VideoclubApp.principal.agregarComponenteAlCentro(new PeliculaUI());
+    }//GEN-LAST:event_botonVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAgregar;
+    private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton botonEliminarEjemplar;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.JLabel campoCodigoPelicula;
+    private javax.swing.JLabel campoGeneroPelicula;
+    private javax.swing.JFormattedTextField campoPrecioAlquiler;
+    private javax.swing.JLabel campoTituloPelicula;
+    private javax.swing.JLabel etiquetaPrecioAlquiler;
     private javax.swing.JLabel etiquetaTitulo;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jsp;
     private javax.swing.JPanel panelDatos;
+    private javax.swing.JTable tablaEjemplares;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @param pelicula the pelicula to set
+     */
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
+        ((EjemplaresPeliculaTableModel) tablaEjemplares.getModel()).setPelicula(pelicula);
+        campoCodigoPelicula.setText(pelicula.getCodigo());
+        campoTituloPelicula.setText(pelicula.getTitulo());
+        campoGeneroPelicula.setText(pelicula.getGenero().toString());
+    }
+
+    private void limpiarCampos() {
+        campoPrecioAlquiler.setValue(0);
+    }
 }

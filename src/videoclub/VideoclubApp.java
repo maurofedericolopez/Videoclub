@@ -12,13 +12,14 @@ import java.util.logging.Logger;
  */
 public class VideoclubApp extends Observable {
 
+    public static Principal principal;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         try {
             Controladores controladores = new Controladores();
-            Principal principal = new Principal();
+            principal = new Principal();
             principal.setVisible(true);
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(VideoclubApp.class.getName()).log(Level.SEVERE, null, ex);

@@ -54,6 +54,7 @@ public class GeneroUI extends javax.swing.JPanel {
         add(etiquetaTitulo, java.awt.BorderLayout.PAGE_START);
 
         tablaGeneros.setModel(new Vistas.modelos.GeneroTableModel());
+        tablaGeneros.getTableHeader().setReorderingAllowed(false);
         jsp.setViewportView(tablaGeneros);
 
         add(jsp, java.awt.BorderLayout.CENTER);
@@ -164,7 +165,7 @@ public class GeneroUI extends javax.swing.JPanel {
                 throw new Exception("El nombre del género ya está registrado");
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } finally {
             limpiarCampos();
         }
@@ -183,7 +184,7 @@ public class GeneroUI extends javax.swing.JPanel {
             else
                 throw new Exception("No ha seleccionado ningun género para eliminar");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonEliminarGeneroActionPerformed
 
