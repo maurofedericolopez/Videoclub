@@ -2,7 +2,6 @@ package videoclub;
 
 import Vistas.Principal;
 import java.io.IOException;
-import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,7 +9,7 @@ import java.util.logging.Logger;
  *
  * @author Mauro Federico Lopez
  */
-public class VideoclubApp extends Observable {
+public class VideoclubApp {
 
     public static Principal principal;
     /**
