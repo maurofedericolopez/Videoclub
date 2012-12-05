@@ -10,6 +10,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 import videoclub.Controladores;
+import videoclub.VideoclubApp;
 
 /**
  *
@@ -58,6 +59,8 @@ public class ClienteUI extends javax.swing.JPanel {
         tablaClientes = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         botonEliminarCliente = new javax.swing.JButton();
+        botonVerBonosComprados = new javax.swing.JButton();
+        botonVerSanciones = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1050, 530));
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -190,17 +193,40 @@ public class ClienteUI extends javax.swing.JPanel {
             }
         });
 
+        botonVerBonosComprados.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonVerBonosComprados.setText("Ver Bonos Comprados");
+        botonVerBonosComprados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerBonosCompradosActionPerformed(evt);
+            }
+        });
+
+        botonVerSanciones.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonVerSanciones.setText("Ver Sanciones");
+        botonVerSanciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVerSancionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(botonEliminarCliente)
-                .addGap(0, 649, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonVerBonosComprados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonVerSanciones)
+                .addGap(0, 409, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(botonEliminarCliente)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(botonEliminarCliente)
+                .addComponent(botonVerBonosComprados)
+                .addComponent(botonVerSanciones))
         );
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -217,8 +243,6 @@ public class ClienteUI extends javax.swing.JPanel {
                 controlador.registrarNuevoCliente(new Cliente(dni, apellido, nombre, email, telefono));
                 limpiarCampos();
             }
-            else
-                throw new Exception("El dni del cliente ya está registrado");
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -230,21 +254,44 @@ public class ClienteUI extends javax.swing.JPanel {
 
     private void botonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarClienteActionPerformed
         try {
-            int[] indices = tablaClientes.getSelectedRows();
-            if(indices.length > 0) {
-                controlador.eliminarCliente(indices);
-            }
-            else
-                throw new Exception("No ha seleccionado ningun cliente para eliminar");
+            controlador.eliminarCliente(tablaClientes.getSelectedRows());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonEliminarClienteActionPerformed
 
+    private void botonVerBonosCompradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerBonosCompradosActionPerformed
+        try {
+            if(tablaClientes.getSelectedRow() >= 0) {
+                BonosClienteUI ventanaBono = new BonosClienteUI();
+                ventanaBono.setCliente(controlador.obtenerCliente(tablaClientes.getSelectedRow()));
+                VideoclubApp.principal.agregarComponenteAlCentro(ventanaBono);
+            } else
+                throw new Exception("No ha seleccionado ningún cliente");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonVerBonosCompradosActionPerformed
+
+    private void botonVerSancionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerSancionesActionPerformed
+        try {
+            if(tablaClientes.getSelectedRow() >= 0) {
+                SancionUI ventanaSancion = new SancionUI();
+                ventanaSancion.setCliente(controlador.obtenerCliente(tablaClientes.getSelectedRow()));
+                VideoclubApp.principal.agregarComponenteAlCentro(ventanaSancion);
+            } else
+                throw new Exception("No ha seleccionado ningún cliente");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botonVerSancionesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonEliminarCliente;
+    private javax.swing.JButton botonVerBonosComprados;
+    private javax.swing.JButton botonVerSanciones;
     private javax.swing.JTextField campoApellido;
     private javax.swing.JFormattedTextField campoDni;
     private javax.swing.JTextField campoEmail;

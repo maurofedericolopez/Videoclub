@@ -80,6 +80,6 @@ public class Bono implements Serializable {
 
     @Override
     public String toString() {
-        return "Crédito = " + credito + " Periodo = " + periodo;
+        return "Crédito = " + credito + "   Periodo = " + periodo;
     }
 }

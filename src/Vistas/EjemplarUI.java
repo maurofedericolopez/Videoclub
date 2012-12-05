@@ -41,11 +41,15 @@ public class EjemplarUI extends javax.swing.JPanel {
         campoTituloPelicula = new javax.swing.JLabel();
         campoGeneroPelicula = new javax.swing.JLabel();
         botonEliminarEjemplar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        etiquetaPrecioAlquiler = new javax.swing.JLabel();
-        campoPrecioAlquiler = new javax.swing.JFormattedTextField();
+        campoAño = new javax.swing.JLabel();
+        campoDuracion = new javax.swing.JLabel();
+        jScrollPane = new javax.swing.JScrollPane();
+        campoSinopsis = new javax.swing.JTextPane();
         botonAgregar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        etiquetaCreditoAlquiler = new javax.swing.JLabel();
+        campoCreditoAlquiler = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
         botonVolver = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(750, 380));
@@ -54,12 +58,13 @@ public class EjemplarUI extends javax.swing.JPanel {
 
         etiquetaTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         etiquetaTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTitulo.setText("Ejemplares");
+        etiquetaTitulo.setText("Datos de Película");
         add(etiquetaTitulo, java.awt.BorderLayout.PAGE_START);
 
-        panelDatos.setMaximumSize(new java.awt.Dimension(750, 351));
-        panelDatos.setMinimumSize(new java.awt.Dimension(750, 351));
+        panelDatos.setMaximumSize(new java.awt.Dimension(567, 351));
+        panelDatos.setMinimumSize(new java.awt.Dimension(567, 351));
 
+        tablaEjemplares.setAutoCreateRowSorter(true);
         tablaEjemplares.setModel(new Vistas.modelos.EjemplaresPeliculaTableModel());
         tablaEjemplares.getTableHeader().setReorderingAllowed(false);
         jsp.setViewportView(tablaEjemplares);
@@ -81,46 +86,15 @@ public class EjemplarUI extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
-        panelDatos.setLayout(panelDatosLayout);
-        panelDatosLayout.setHorizontalGroup(
-            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDatosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jsp, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
-                    .addComponent(campoCodigoPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoTituloPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoGeneroPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelDatosLayout.createSequentialGroup()
-                        .addComponent(botonEliminarEjemplar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelDatosLayout.setVerticalGroup(
-            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDatosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(campoCodigoPelicula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoTituloPelicula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoGeneroPelicula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonEliminarEjemplar)
-                .addGap(38, 38, 38))
-        );
+        campoAño.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoAño.setText("jLabel2");
 
-        add(panelDatos, java.awt.BorderLayout.CENTER);
+        campoDuracion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        campoDuracion.setText("jLabel2");
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(183, 351));
-        jPanel1.setMinimumSize(new java.awt.Dimension(183, 351));
-
-        etiquetaPrecioAlquiler.setText("Precio Alquiler");
-
-        campoPrecioAlquiler.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        campoSinopsis.setEditable(false);
+        campoSinopsis.setOpaque(false);
+        jScrollPane.setViewportView(campoSinopsis);
 
         botonAgregar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         botonAgregar.setText("Agregar");
@@ -138,38 +112,82 @@ public class EjemplarUI extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        etiquetaCreditoAlquiler.setText("Crédito Alquiler");
+
+        campoCreditoAlquiler.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("######"))));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Agregar nuevo ejemplar");
+
+        javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
+        panelDatos.setLayout(panelDatosLayout);
+        panelDatosLayout.setHorizontalGroup(
+            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(etiquetaPrecioAlquiler)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campoTituloPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoCodigoPelicula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonEliminarEjemplar)
+                            .addGroup(panelDatosLayout.createSequentialGroup()
+                                .addComponent(campoGeneroPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoAño, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addComponent(jsp, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botonAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonCancelar)))
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
+                                .addComponent(botonAgregar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonCancelar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosLayout.createSequentialGroup()
+                                .addComponent(etiquetaCreditoAlquiler)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoCreditoAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        panelDatosLayout.setVerticalGroup(
+            panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDatosLayout.createSequentialGroup()
+                .addComponent(campoCodigoPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(campoTituloPelicula, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonAgregar)
-                    .addComponent(botonCancelar))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoGeneroPelicula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoAño)
+                    .addComponent(campoDuracion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonEliminarEjemplar))
+                    .addGroup(panelDatosLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaCreditoAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoCreditoAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonAgregar)
+                            .addComponent(botonCancelar))))
+                .addGap(16, 16, 16))
         );
 
-        add(jPanel1, java.awt.BorderLayout.LINE_END);
+        add(panelDatos, java.awt.BorderLayout.CENTER);
 
         botonVolver.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         botonVolver.setText("Volver");
@@ -180,16 +198,6 @@ public class EjemplarUI extends javax.swing.JPanel {
         });
         add(botonVolver, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        limpiarCampos();
-    }//GEN-LAST:event_botonCancelarActionPerformed
-
-    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-        Double precioAlquiler = ((Number) campoPrecioAlquiler.getValue()).doubleValue();
-        controlador.registrarNuevoEjemplar(pelicula, precioAlquiler);
-        limpiarCampos();
-    }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonEliminarEjemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarEjemplarActionPerformed
         try {
@@ -208,18 +216,32 @@ public class EjemplarUI extends javax.swing.JPanel {
         VideoclubApp.principal.agregarComponenteAlCentro(new PeliculaUI());
     }//GEN-LAST:event_botonVolverActionPerformed
 
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+        Integer creditoAlquiler = ((Number) campoCreditoAlquiler.getValue()).intValue();
+        controlador.registrarNuevoEjemplar(pelicula, creditoAlquiler);
+        limpiarCampos();
+    }//GEN-LAST:event_botonAgregarActionPerformed
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_botonCancelarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonEliminarEjemplar;
     private javax.swing.JButton botonVolver;
+    private javax.swing.JLabel campoAño;
     private javax.swing.JLabel campoCodigoPelicula;
+    private javax.swing.JFormattedTextField campoCreditoAlquiler;
+    private javax.swing.JLabel campoDuracion;
     private javax.swing.JLabel campoGeneroPelicula;
-    private javax.swing.JFormattedTextField campoPrecioAlquiler;
+    private javax.swing.JTextPane campoSinopsis;
     private javax.swing.JLabel campoTituloPelicula;
-    private javax.swing.JLabel etiquetaPrecioAlquiler;
+    private javax.swing.JLabel etiquetaCreditoAlquiler;
     private javax.swing.JLabel etiquetaTitulo;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jsp;
     private javax.swing.JPanel panelDatos;
     private javax.swing.JTable tablaEjemplares;
@@ -231,12 +253,15 @@ public class EjemplarUI extends javax.swing.JPanel {
     public void setPelicula(Pelicula pelicula) {
         this.pelicula = pelicula;
         ((EjemplaresPeliculaTableModel) tablaEjemplares.getModel()).setPelicula(pelicula);
-        campoCodigoPelicula.setText(pelicula.getCodigo());
-        campoTituloPelicula.setText(pelicula.getTitulo());
-        campoGeneroPelicula.setText(pelicula.getGenero().toString());
+        campoCodigoPelicula.setText("Código: " + pelicula.getCodigo());
+        campoTituloPelicula.setText("Título: " + pelicula.getTitulo());
+        campoGeneroPelicula.setText("Género: " + pelicula.getGenero().toString());
+        campoAño.setText("Año: " + pelicula.getAño().toString());
+        campoDuracion.setText("Duración: " + pelicula.getMinDuracion().toString() + " min");
+        campoSinopsis.setText("Sinopsis: " + pelicula.getSinopsis());
     }
 
     private void limpiarCampos() {
-        campoPrecioAlquiler.setValue(0);
+        campoCreditoAlquiler.setValue(0);
     }
 }

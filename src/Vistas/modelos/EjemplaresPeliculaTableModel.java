@@ -16,7 +16,7 @@ import videoclub.Controladores;
 public class EjemplaresPeliculaTableModel extends AbstractTableModel implements Observer {
 
     private PeliculaController controlador;
-    private static final String[] columns = {"Código","Estado","Precio Alquiler"};
+    private static final String[] columns = {"Código","Estado","Crédito Alquiler"};
     private Pelicula pelicula;
     private ArrayList<Ejemplar> ejemplares;
 
@@ -44,7 +44,10 @@ public class EjemplaresPeliculaTableModel extends AbstractTableModel implements 
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
+        if(columnIndex > 0)
+            return false;
+        else
+            return true;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class EjemplaresPeliculaTableModel extends AbstractTableModel implements 
             case 1 :
                 return ejemplares.get(rowIndex).getEstado().toString();
             case 2 : 
-                return ejemplares.get(rowIndex).getPrecioAlquiler();
+                return ejemplares.get(rowIndex).getCreditoAlquiler();
             default :
                 return null;
         }
@@ -69,7 +72,7 @@ public class EjemplaresPeliculaTableModel extends AbstractTableModel implements 
             case 1:
                 return String.class;
             case 2:
-                return Double.class;
+                return Integer.class;
             default:
                 return null;
         }

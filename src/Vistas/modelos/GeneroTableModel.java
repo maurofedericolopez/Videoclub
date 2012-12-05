@@ -24,7 +24,7 @@ public class GeneroTableModel extends AbstractTableModel implements Observer {
 
     @Override
     public int getRowCount() {
-        return controlador.getPeliculaCount();
+        return controlador.getGeneroCount();
     }
 
     @Override

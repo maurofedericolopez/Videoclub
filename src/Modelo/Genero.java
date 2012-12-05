@@ -1,10 +1,12 @@
 package Modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Mauro Federico Lopez
  */
-public class Genero {
+public class Genero implements Serializable {
 
     private String nombre;
     private String descripcion;

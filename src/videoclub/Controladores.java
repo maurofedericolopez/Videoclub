@@ -17,6 +17,7 @@ public class Controladores {
     public static ClienteController clienteController;
     public static BonoController bonoController;
     public static AlquilerController alquilerController;
+    public static FacturacionController facturacionController;
 
     public Controladores() throws IOException, ClassNotFoundException {
         videoclub = (Videoclub) new Serializacion().deserializarModelo();
@@ -25,6 +26,7 @@ public class Controladores {
         alquilerController = new AlquilerController(videoclub);
         bonoController = new BonoController(videoclub);
         proveedorController = new ProveedorController(videoclub);
+        facturacionController = new FacturacionController(videoclub);
     }
 
 }

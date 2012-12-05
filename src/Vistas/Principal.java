@@ -26,10 +26,8 @@ public class Principal extends javax.swing.JFrame {
                 try {
                     new Serializacion().serializarModelo(Controladores.videoclub);
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null,
-                    "No se pudo guardar los cambios realizados.",
-                    "Error al guardar",
-                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se pudo guardar los cambios realizados.",
+                    "Error al guardar", JOptionPane.ERROR_MESSAGE);
                 }
                 System.exit(0);
             }
@@ -53,8 +51,9 @@ public class Principal extends javax.swing.JFrame {
         botonAlquilar = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         botonConfeccionarBono = new javax.swing.JButton();
-        botonVerBonosDelCliente = new javax.swing.JButton();
         botonGeneros = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        botonIngresos = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,6 +100,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton7.setText("Top Peliculas");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         botonConfeccionarBono.setText("Confeccionar Bono");
         botonConfeccionarBono.addActionListener(new java.awt.event.ActionListener() {
@@ -109,17 +113,24 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        botonVerBonosDelCliente.setText("Ver Bonos de Cliente");
-        botonVerBonosDelCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVerBonosDelClienteActionPerformed(evt);
-            }
-        });
-
         botonGeneros.setText("Generos");
         botonGeneros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGenerosActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Recargo Sanción");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        botonIngresos.setText("Ingresos");
+        botonIngresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresosActionPerformed(evt);
             }
         });
 
@@ -135,10 +146,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(botonComprarBono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonAlquilar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonConfeccionarBono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonConfeccionarBono, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                     .addComponent(botonClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonVerBonosDelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonGeneros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botonGeneros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonIngresos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jpBotonesLayout.setVerticalGroup(
@@ -151,23 +163,26 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonProveedores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonGeneros)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonConfeccionarBono)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonComprarBono)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonAlquilar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonConfeccionarBono)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonVerBonosDelCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonGeneros)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addComponent(botonIngresos)
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         getContentPane().add(jpBotones, java.awt.BorderLayout.LINE_START);
 
         panelCentral.setMaximumSize(new java.awt.Dimension(750, 380));
+        panelCentral.setMinimumSize(new java.awt.Dimension(750, 380));
         panelCentral.setPreferredSize(new java.awt.Dimension(750, 380));
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
 
@@ -198,13 +213,21 @@ public class Principal extends javax.swing.JFrame {
         agregarComponenteAlCentro(new ConfeccionarBonoUI());
     }//GEN-LAST:event_botonConfeccionarBonoActionPerformed
 
-    private void botonVerBonosDelClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerBonosDelClienteActionPerformed
-        agregarComponenteAlCentro(new BonosClienteUI());
-    }//GEN-LAST:event_botonVerBonosDelClienteActionPerformed
-
     private void botonGenerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerosActionPerformed
         agregarComponenteAlCentro(new GeneroUI());
     }//GEN-LAST:event_botonGenerosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        agregarComponenteAlCentro(new RecargoSancionUI());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonIngresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresosActionPerformed
+        agregarComponenteAlCentro(new FacturacionMensualUI());
+    }//GEN-LAST:event_botonIngresosActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        agregarComponenteAlCentro(new TopPeliculasUI());
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     public void agregarComponenteAlCentro(JComponent componente) {
         getContentPane().removeAll();
@@ -256,9 +279,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botonComprarBono;
     private javax.swing.JButton botonConfeccionarBono;
     private javax.swing.JButton botonGeneros;
+    private javax.swing.JButton botonIngresos;
     private javax.swing.JButton botonPeliculas;
     private javax.swing.JButton botonProveedores;
-    private javax.swing.JButton botonVerBonosDelCliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JPanel jpBotones;
     private javax.swing.JPanel panelCentral;

@@ -2,7 +2,7 @@ package Modelo;
 
 import Modelo.Enumerados.EstadoAlquiler;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,45 +11,48 @@ import java.util.Date;
  */
 public class Alquiler implements Serializable {
 
-    private Cliente miCliente;
-    private ArrayList<Ejemplar> listaEjemplares;
+    private Cliente cliente;
+    private Ejemplar ejemplar;
     private Date fechaAlquiler;
     private Date fechaDevolucion;
     private EstadoAlquiler estado;
+    private Integer periodo;
 
-    public Alquiler(Cliente miCliente, ArrayList<Ejemplar> listaEjemplares) {
-        this.listaEjemplares = listaEjemplares;
-        this.miCliente = miCliente;
+    public Alquiler(Cliente cliente, Ejemplar ejemplar, Integer periodo) {
+        this.cliente = cliente;
+        this.ejemplar = ejemplar;
+        this.periodo = periodo;
         fechaAlquiler = new Date();
-        this.estado = EstadoAlquiler.NODEVUELTO;
+        fechaDevolucion = null;
+        estado = EstadoAlquiler.NO_DEVUELTO;
     }
 
     /**
-     * @return the miCliente
+     * @return the cliente
      */
-    public Cliente getMiCliente() {
-        return miCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     /**
-     * @param miCliente the miCliente to set
+     * @param cliente the cliente to set
      */
-    public void setMiCliente(Cliente miCliente) {
-        this.miCliente = miCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     /**
-     * @return the listaEjemplares
+     * @return the ejemplar
      */
-    public ArrayList<Ejemplar> getListaEjemplares() {
-        return listaEjemplares;
+    public Ejemplar getEjemplar() {
+        return ejemplar;
     }
 
     /**
-     * @param listaEjemplares the listaEjemplares to set
+     * @param ejemplar the ejemplar to set
      */
-    public void setListaEjemplares(ArrayList<Ejemplar> listaEjemplares) {
-        this.listaEjemplares = listaEjemplares;
+    public void setEjemplar(Ejemplar ejemplar) {
+        this.ejemplar = ejemplar;
     }
 
     /**
@@ -67,6 +70,37 @@ public class Alquiler implements Serializable {
     }
 
     /**
+     * @return the estado
+     */
+    public EstadoAlquiler getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(EstadoAlquiler estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * 
+     */
+    public void cambiarEstado() {
+        if(estado == EstadoAlquiler.NO_DEVUELTO)
+            estado = EstadoAlquiler.DEVUELTO;
+        else
+            estado = EstadoAlquiler.NO_DEVUELTO;
+    }
+
+    public Date obtenerFechaDevolucion() {
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fechaAlquiler);
+        calendario.add(Calendar.DATE, getPeriodo());
+        return calendario.getTime();
+    }
+
+    /**
      * @return the fechaDevolucion
      */
     public Date getFechaDevolucion() {
@@ -81,17 +115,17 @@ public class Alquiler implements Serializable {
     }
 
     /**
-     * @return the estado
+     * @return the periodo
      */
-    public EstadoAlquiler getEstado() {
-        return estado;
+    public Integer getPeriodo() {
+        return periodo;
     }
 
     /**
-     * @param estado the estado to set
+     * @param periodo the periodo to set
      */
-    public void setEstado(EstadoAlquiler estado) {
-        this.estado = estado;
+    public void setPeriodo(Integer periodo) {
+        this.periodo = periodo;
     }
 
 }

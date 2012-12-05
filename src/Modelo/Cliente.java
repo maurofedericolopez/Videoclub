@@ -2,6 +2,7 @@ package Modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -16,7 +17,8 @@ public class Cliente implements Serializable {
     private String email;
     private Long telefono;
     private HashMap<Integer, Integer> bonos;
-    private ArrayList<Sancion> sanciones;
+    private HashMap<Date, Sancion> sanciones;
+    private ArrayList<Alquiler> alquileres;
 
     public Cliente(Long dni, String apellido, String nombre, String email, Long telefono) {
         this.dni = dni;
@@ -25,7 +27,8 @@ public class Cliente implements Serializable {
         this.email = email;
         this.telefono = telefono;
         bonos = new HashMap();
-        sanciones = new ArrayList();
+        sanciones = new HashMap();
+        alquileres = new ArrayList();
     }
 
     /**
@@ -101,15 +104,15 @@ public class Cliente implements Serializable {
     /**
      * @return the sanciones
      */
-    public ArrayList<Sancion> getSanciones() {
+    public HashMap<Date, Sancion> getSanciones() {
         return sanciones;
     }
 
     /**
      * @param sanciones the sanciones to set
      */
-    public void setSanciones(ArrayList<Sancion> misSanciones) {
-        this.sanciones = misSanciones;
+    public void setSanciones(HashMap<Date, Sancion> sanciones) {
+        this.sanciones = sanciones;
     }
 
     /**
@@ -124,6 +127,25 @@ public class Cliente implements Serializable {
      */
     public void setBonos(HashMap<Integer, Integer> bonos) {
         this.bonos = bonos;
+    }
+
+    /**
+     * @return the alquileres
+     */
+    public ArrayList<Alquiler> getAlquileres() {
+        return alquileres;
+    }
+
+    /**
+     * @param alquileres the alquileres to set
+     */
+    public void setAlquileres(ArrayList<Alquiler> alquileres) {
+        this.alquileres = alquileres;
+    }
+
+    @Override
+    public String toString() {
+        return apellido + " " + nombre;
     }
 
 }

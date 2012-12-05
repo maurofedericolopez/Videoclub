@@ -38,17 +38,15 @@ public class ComprarBonoUI extends javax.swing.JPanel {
 
         jlTitulo = new javax.swing.JLabel();
         jpCenter = new javax.swing.JPanel();
-        etiquetaPrimerPaso = new javax.swing.JLabel();
-        etiquetaCliente = new javax.swing.JLabel();
-        etiquetaSegundoPaso = new javax.swing.JLabel();
+        campoCliente = new javax.swing.JLabel();
+        etiquetaBono = new javax.swing.JLabel();
         etiquetaDni = new javax.swing.JLabel();
         botonComprarBono = new javax.swing.JButton();
         botonBuscarCliente = new javax.swing.JButton();
-        listaBonos = new javax.swing.JComboBox();
+        campoBonos = new javax.swing.JComboBox();
         campoDniCliente = new javax.swing.JFormattedTextField();
         etiquetaPrecioBono = new javax.swing.JLabel();
         campoPrecioBono = new javax.swing.JLabel();
-        campoCliente = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(750, 380));
@@ -63,17 +61,14 @@ public class ComprarBonoUI extends javax.swing.JPanel {
         jpCenter.setMaximumSize(new java.awt.Dimension(750, 355));
         jpCenter.setMinimumSize(new java.awt.Dimension(750, 355));
 
-        etiquetaPrimerPaso.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        etiquetaPrimerPaso.setText("1° Ingrese el DNI del cliente y pulse el botón Buscar Cliente");
+        campoCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoCliente.setText("Cliente");
 
-        etiquetaCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiquetaCliente.setText("Cliente");
-
-        etiquetaSegundoPaso.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        etiquetaSegundoPaso.setText("2° Seleccione el periodo del bono");
+        etiquetaBono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiquetaBono.setText("Seleccione el bono");
 
         etiquetaDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        etiquetaDni.setText("DNI");
+        etiquetaDni.setText("Ingrese el DNI del cliente");
 
         botonComprarBono.setText("Comprar Bono");
         botonComprarBono.addActionListener(new java.awt.event.ActionListener() {
@@ -89,17 +84,15 @@ public class ComprarBonoUI extends javax.swing.JPanel {
             }
         });
 
-        listaBonos.setModel(new Vistas.modelos.BonoComboBoxModel());
+        campoBonos.setModel(new Vistas.modelos.BonoComboBoxModel());
 
         campoDniCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
 
-        etiquetaPrecioBono.setText("Precio bono");
+        etiquetaPrecioBono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiquetaPrecioBono.setText("Precio del bono");
 
         campoPrecioBono.setBackground(new java.awt.Color(255, 255, 255));
         campoPrecioBono.setOpaque(true);
-
-        campoCliente.setBackground(new java.awt.Color(255, 255, 255));
-        campoCliente.setOpaque(true);
 
         botonCancelar.setText("Cancelar");
         botonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,65 +106,53 @@ public class ComprarBonoUI extends javax.swing.JPanel {
         jpCenterLayout.setHorizontalGroup(
             jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCenterLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpCenterLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpCenterLayout.createSequentialGroup()
                             .addComponent(etiquetaDni)
-                            .addComponent(etiquetaCliente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jpCenterLayout.createSequentialGroup()
-                                .addComponent(campoDniCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonBuscarCliente))
-                            .addComponent(campoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jpCenterLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(etiquetaPrimerPaso))
-                    .addGroup(jpCenterLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(etiquetaSegundoPaso, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(campoDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(botonBuscarCliente))
+                        .addGroup(jpCenterLayout.createSequentialGroup()
                             .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jpCenterLayout.createSequentialGroup()
-                                    .addComponent(etiquetaPrecioBono)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(campoPrecioBono, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(listaBonos, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jpCenterLayout.createSequentialGroup()
-                                    .addComponent(botonComprarBono)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(botonCancelar))))))
-                .addContainerGap(253, Short.MAX_VALUE))
+                                .addComponent(etiquetaBono)
+                                .addComponent(etiquetaPrecioBono))
+                            .addGap(46, 46, 46)
+                            .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(campoPrecioBono, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campoBonos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(campoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpCenterLayout.createSequentialGroup()
+                        .addComponent(botonComprarBono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonCancelar)))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         jpCenterLayout.setVerticalGroup(
             jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCenterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etiquetaPrimerPaso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaDni)
-                    .addComponent(botonBuscarCliente)
-                    .addComponent(campoDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonBuscarCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoCliente)
+                .addGap(14, 14, 14)
                 .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaCliente)
-                    .addComponent(campoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addComponent(etiquetaSegundoPaso)
-                .addGap(18, 18, 18)
-                .addComponent(listaBonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiquetaBono)
+                    .addComponent(campoBonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoPrecioBono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etiquetaPrecioBono, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(etiquetaPrecioBono, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoPrecioBono, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jpCenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonComprarBono)
                     .addComponent(botonCancelar))
-                .addGap(128, 128, 128))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         add(jpCenter, java.awt.BorderLayout.CENTER);
@@ -180,12 +161,7 @@ public class ComprarBonoUI extends javax.swing.JPanel {
     private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
         try {
             cliente = clienteController.buscarClientePorDni(((Number) campoDniCliente.getValue()).longValue());
-            campoCliente.setText(cliente.getApellido()+" "+cliente.getNombre());
-        } catch(NullPointerException exc) {
-            JOptionPane.showMessageDialog(null,
-                    "No existe ningun cliente con el numero de DNI ingresado.",
-                    "Error Cliente",
-                    JOptionPane.ERROR_MESSAGE);
+            campoCliente.setText("Cliente: " + cliente.toString());
         } catch(Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -194,15 +170,11 @@ public class ComprarBonoUI extends javax.swing.JPanel {
     private void botonComprarBonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComprarBonoActionPerformed
         try {
             if(cliente != null)
-                if(listaBonos.getSelectedItem() != null) {
-                    clienteController.comprarBono(cliente, (Bono) listaBonos.getSelectedItem());
+                if(campoBonos.getSelectedItem() != null) {
+                    clienteController.comprarBono(cliente, (Bono) campoBonos.getSelectedItem());
                     limpiarCampos();
                     JOptionPane.showMessageDialog(null, "Se ha completado la operación correctamente", "Enhorabuena", JOptionPane.INFORMATION_MESSAGE);
                 }
-                else
-                    throw new Exception("No ha seleccionado ningún bono");
-            else
-                throw new Exception("No ha seleccionado ningún cliente");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -216,25 +188,23 @@ public class ComprarBonoUI extends javax.swing.JPanel {
     private javax.swing.JButton botonBuscarCliente;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonComprarBono;
+    private javax.swing.JComboBox campoBonos;
     private javax.swing.JLabel campoCliente;
     private javax.swing.JFormattedTextField campoDniCliente;
     private javax.swing.JLabel campoPrecioBono;
-    private javax.swing.JLabel etiquetaCliente;
+    private javax.swing.JLabel etiquetaBono;
     private javax.swing.JLabel etiquetaDni;
     private javax.swing.JLabel etiquetaPrecioBono;
-    private javax.swing.JLabel etiquetaPrimerPaso;
-    private javax.swing.JLabel etiquetaSegundoPaso;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JPanel jpCenter;
-    private javax.swing.JComboBox listaBonos;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarCampos() {
         campoDniCliente.setValue(0);
-        campoCliente.setText("");
+        campoCliente.setText("Cliente: ");
         campoPrecioBono.setText("");
-        listaBonos.setSelectedItem(null);
-        listaBonos.updateUI();
+        campoBonos.setSelectedItem(null);
+        campoBonos.updateUI();
         cliente = null;
     }
 

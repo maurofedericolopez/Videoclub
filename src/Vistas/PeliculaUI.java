@@ -46,7 +46,7 @@ public class PeliculaUI extends javax.swing.JPanel {
 
         panelBotones = new javax.swing.JPanel();
         botonEliminarPelicula = new javax.swing.JButton();
-        botonVerEjemplares = new javax.swing.JButton();
+        botonVerDatosPelicula = new javax.swing.JButton();
         panelDatos = new javax.swing.JPanel();
         etiquetaCodigo = new javax.swing.JLabel();
         campoCodigo = new javax.swing.JTextField();
@@ -82,11 +82,11 @@ public class PeliculaUI extends javax.swing.JPanel {
             }
         });
 
-        botonVerEjemplares.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        botonVerEjemplares.setText("Ver Ejemplares");
-        botonVerEjemplares.addActionListener(new java.awt.event.ActionListener() {
+        botonVerDatosPelicula.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        botonVerDatosPelicula.setText("Ver Datos de Película");
+        botonVerDatosPelicula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVerEjemplaresActionPerformed(evt);
+                botonVerDatosPeliculaActionPerformed(evt);
             }
         });
 
@@ -97,14 +97,14 @@ public class PeliculaUI extends javax.swing.JPanel {
             .addGroup(panelBotonesLayout.createSequentialGroup()
                 .addComponent(botonEliminarPelicula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonVerEjemplares)
-                .addGap(0, 542, Short.MAX_VALUE))
+                .addComponent(botonVerDatosPelicula)
+                .addGap(0, 516, Short.MAX_VALUE))
         );
         panelBotonesLayout.setVerticalGroup(
             panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(botonEliminarPelicula)
-                .addComponent(botonVerEjemplares))
+                .addComponent(botonVerDatosPelicula))
         );
 
         add(panelBotones, java.awt.BorderLayout.PAGE_END);
@@ -148,7 +148,6 @@ public class PeliculaUI extends javax.swing.JPanel {
         campoSinopsis.setColumns(20);
         campoSinopsis.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         campoSinopsis.setRows(5);
-        campoSinopsis.setEnabled(false);
         jspSinopsis.setViewportView(campoSinopsis);
 
         botonAgregar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -248,7 +247,7 @@ public class PeliculaUI extends javax.swing.JPanel {
 
         etiquetaPeliculas.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         etiquetaPeliculas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaPeliculas.setText("Peliculas");
+        etiquetaPeliculas.setText("Péliculas");
         add(etiquetaPeliculas, java.awt.BorderLayout.PAGE_START);
 
         tablaPeliculas.setAutoCreateRowSorter(true);
@@ -271,13 +270,14 @@ public class PeliculaUI extends javax.swing.JPanel {
                     Genero genero = (Genero) campoGenero.getSelectedItem();
                     String sinopsis = campoSinopsis.getText();
                     controlador.registrarNuevaPelicula(new Pelicula(codigo, titulo, año, minutoDuracion, genero, sinopsis));
+                    limpiarCampos();
                 }
                 else
                     throw new Exception("No ha seleccionado un genero para la pelicula");
             else
                 throw new Exception("El código de la película ya está registrado");
         } catch(Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botonAgregarActionPerformed
 
@@ -298,7 +298,7 @@ public class PeliculaUI extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_botonEliminarPeliculaActionPerformed
 
-    private void botonVerEjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerEjemplaresActionPerformed
+    private void botonVerDatosPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerDatosPeliculaActionPerformed
         try {
             int indice = tablaPeliculas.getSelectedRow();
             if(indice >= 0) {
@@ -308,17 +308,17 @@ public class PeliculaUI extends javax.swing.JPanel {
                 VideoclubApp.principal.agregarComponenteAlCentro(ventanaEjemplar);
             }
             else
-                throw new Exception("No ha seleccionado ninguna película para ver sus ejemplares");
+                throw new Exception("No ha seleccionado ninguna película para ver sus datos");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_botonVerEjemplaresActionPerformed
+    }//GEN-LAST:event_botonVerDatosPeliculaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonEliminarPelicula;
-    private javax.swing.JButton botonVerEjemplares;
+    private javax.swing.JButton botonVerDatosPelicula;
     private javax.swing.JFormattedTextField campoAño;
     private javax.swing.JTextField campoCodigo;
     private javax.swing.JComboBox campoGenero;

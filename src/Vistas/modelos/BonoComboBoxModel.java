@@ -1,9 +1,7 @@
 package Vistas.modelos;
 
 import Controladores.BonoController;
-import Controladores.PeliculaController;
 import Modelo.Bono;
-import Modelo.Genero;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;

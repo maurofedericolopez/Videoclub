@@ -15,7 +15,7 @@ import videoclub.Controladores;
 public class PeliculaTableModel extends AbstractTableModel implements Observer {
 
     private PeliculaController controlador;
-    private static final String[] columns = {"Código","Título","Año","Duración","Sinopsis","Género"};
+    private static final String[] columns = {"Código","Título","Año","Duración[min]","Sinopsis","Género"};
 
     public PeliculaTableModel() {
         super();
@@ -40,10 +40,7 @@ public class PeliculaTableModel extends AbstractTableModel implements Observer {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if(columnIndex > 0)
-            return false;
-        else
-            return false;
+        return false;
     }
 
     @Override
@@ -98,17 +95,19 @@ public class PeliculaTableModel extends AbstractTableModel implements Observer {
     @Override
     public Class getColumnClass(int columnIndex) {
         switch (columnIndex) {
-            case 0:
+            case 0 :
                 return String.class;
-            case 1:
+            case 1 :
+                return String.class;
+            case 2 :
                 return Long.class;
-            case 2:
+            case 3 :
                 return Long.class;
-            case 3:
+            case 4 :
                 return String.class;
-            case 4:
-                return String.class;
-            default:
+            case 5 :
+                return Genero.class;
+            default :
                 return null;
         }
     }

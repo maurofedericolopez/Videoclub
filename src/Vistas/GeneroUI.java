@@ -53,6 +53,7 @@ public class GeneroUI extends javax.swing.JPanel {
         etiquetaTitulo.setText("Géneros");
         add(etiquetaTitulo, java.awt.BorderLayout.PAGE_START);
 
+        tablaGeneros.setAutoCreateRowSorter(true);
         tablaGeneros.setModel(new Vistas.modelos.GeneroTableModel());
         tablaGeneros.getTableHeader().setReorderingAllowed(false);
         jsp.setViewportView(tablaGeneros);
@@ -159,7 +160,7 @@ public class GeneroUI extends javax.swing.JPanel {
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         try {
             if (controlador.nombreGeneroValido(campoNombre.getText())) {
-                controlador.registrarNuevaGenero(new Genero(campoNombre.getText(), campoDescripcion.getText()));
+                controlador.registrarNuevoGenero(new Genero(campoNombre.getText(), campoDescripcion.getText()));
             }
             else {
                 throw new Exception("El nombre del género ya está registrado");

@@ -1,7 +1,6 @@
 package Vistas.modelos;
 
 import Controladores.ClienteController;
-import Modelo.Cliente;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.AbstractTableModel;
@@ -39,7 +38,10 @@ public class ClienteTableModel extends AbstractTableModel implements Observer {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
+        if(columnIndex > 0)
+            return false;
+        else
+            return true;
     }
 
     @Override
@@ -57,36 +59,6 @@ public class ClienteTableModel extends AbstractTableModel implements Observer {
                 return controlador.obtenerCliente(rowIndex).getTelefono();
             default :
                 return null;
-        }
-    }
-
-    @Override
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Cliente cliente = controlador.obtenerCliente(rowIndex);
-        switch (columnIndex) {
-            case 0 :
-                if(controlador.dniClienteValido(((Number) aValue).longValue()))
-                    cliente.setDni(((Number) aValue).longValue());
-                controlador.notificarCambios();
-                break;
-            case 1 :
-                cliente.setApellido(String.valueOf(aValue));
-                controlador.notificarCambios();
-                break;
-            case 2 :
-                cliente.setNombre(String.valueOf(aValue));
-                controlador.notificarCambios();
-                break;
-            case 3 :
-                cliente.setEmail(String.valueOf(aValue));
-                controlador.notificarCambios();
-                break;
-            case 4 :
-                cliente.setTelefono(((Number) aValue).longValue());
-                controlador.notificarCambios();
-                break;
-            default :
-                break;
         }
     }
 

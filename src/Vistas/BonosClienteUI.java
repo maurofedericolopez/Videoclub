@@ -3,8 +3,8 @@ package Vistas;
 import Controladores.ClienteController;
 import Modelo.Cliente;
 import Vistas.modelos.BonosClienteTableModel;
-import javax.swing.JOptionPane;
 import videoclub.Controladores;
+import videoclub.VideoclubApp;
 
 /**
  *
@@ -36,11 +36,8 @@ public class BonosClienteUI extends javax.swing.JPanel {
         panel = new javax.swing.JPanel();
         jsp = new javax.swing.JScrollPane();
         tablaBonosDelCliente = new javax.swing.JTable();
-        etiquetaDni = new javax.swing.JLabel();
-        campoDniCliente = new javax.swing.JFormattedTextField();
-        botonBuscar = new javax.swing.JButton();
-        etiquetaBonosDelCliente = new javax.swing.JLabel();
-        campoCliente = new javax.swing.JLabel();
+        campoNombreCliente = new javax.swing.JLabel();
+        botonVolver = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(750, 380));
         setMinimumSize(new java.awt.Dimension(750, 380));
@@ -48,28 +45,18 @@ public class BonosClienteUI extends javax.swing.JPanel {
 
         etiquetaTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         etiquetaTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTitulo.setText("Bonos de un cliente");
+        etiquetaTitulo.setText("Bonos del cliente");
         add(etiquetaTitulo, java.awt.BorderLayout.PAGE_START);
+
+        panel.setMaximumSize(new java.awt.Dimension(750, 328));
+        panel.setMinimumSize(new java.awt.Dimension(750, 328));
 
         tablaBonosDelCliente.setModel(new Vistas.modelos.BonosClienteTableModel());
         tablaBonosDelCliente.getTableHeader().setReorderingAllowed(false);
         jsp.setViewportView(tablaBonosDelCliente);
 
-        etiquetaDni.setText("Ingrese DNI del cliente");
-
-        campoDniCliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
-
-        botonBuscar.setText("Buscar");
-        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBuscarActionPerformed(evt);
-            }
-        });
-
-        etiquetaBonosDelCliente.setText("Bonos del cliente:");
-
-        campoCliente.setBackground(new java.awt.Color(255, 255, 255));
-        campoCliente.setOpaque(true);
+        campoNombreCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoNombreCliente.setText("jLabel1");
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -79,70 +66,51 @@ public class BonosClienteUI extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etiquetaDni)
-                            .addComponent(etiquetaBonosDelCliente))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(campoDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonBuscar))
-                            .addComponent(campoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(288, Short.MAX_VALUE))
+                        .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 269, Short.MAX_VALUE))
+                    .addComponent(campoNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaDni, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoDniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(campoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etiquetaBonosDelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(campoNombreCliente)
+                .addGap(18, 18, 18)
                 .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         add(panel, java.awt.BorderLayout.CENTER);
+
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+        add(botonVolver, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-        try {
-            cliente = clienteController.buscarClientePorDni(((Number) campoDniCliente.getValue()).longValue());
-            campoCliente.setText(cliente.getApellido()+" "+cliente.getNombre());
-            ((BonosClienteTableModel) tablaBonosDelCliente.getModel()).setCliente(cliente);
-        } catch(NullPointerException exc) {
-            JOptionPane.showMessageDialog(null,
-                    "No existe ningun cliente con el numero de DNI ingresado.",
-                    "Error Cliente",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch(Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            ((BonosClienteTableModel) tablaBonosDelCliente.getModel()).setCliente(null);
-            limpiarCampos();
-        }
-    }//GEN-LAST:event_botonBuscarActionPerformed
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        VideoclubApp.principal.agregarComponenteAlCentro(new ClienteUI());
+    }//GEN-LAST:event_botonVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscar;
-    private javax.swing.JLabel campoCliente;
-    private javax.swing.JFormattedTextField campoDniCliente;
-    private javax.swing.JLabel etiquetaBonosDelCliente;
-    private javax.swing.JLabel etiquetaDni;
+    private javax.swing.JButton botonVolver;
+    private javax.swing.JLabel campoNombreCliente;
     private javax.swing.JLabel etiquetaTitulo;
     private javax.swing.JScrollPane jsp;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tablaBonosDelCliente;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarCampos() {
-        campoCliente.setText("");
-        campoDniCliente.setValue(0);
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+        campoNombreCliente.setText("Cliente: " + cliente.toString());
+        ((BonosClienteTableModel) tablaBonosDelCliente.getModel()).setCliente(cliente);
     }
 }

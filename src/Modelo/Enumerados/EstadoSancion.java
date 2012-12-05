@@ -4,6 +4,6 @@ package Modelo.Enumerados;
  *
  * @author Mauro Federico Lopez
  */
-public enum EstadoAlquiler {
-    DEVUELTO, NO_DEVUELTO
+public enum EstadoSancion {
+    PAGADA, ADEUDA
 }

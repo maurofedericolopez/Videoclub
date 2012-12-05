@@ -91,6 +91,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tablaBonos">
               <Properties>
+                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new Vistas.modelos.BonoTableModel()" type="code"/>
                 </Property>

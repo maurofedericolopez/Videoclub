@@ -18,12 +18,13 @@ public class Pelicula implements Serializable {
     private ArrayList<Ejemplar> ejemplares;
 
     public Pelicula(String codigo, String titulo, Long año, Long minDuracion, Genero genero, String sinopsis) {
-        this.codigo = codigo;
+        this.codigo = codigo.toUpperCase();
         this.titulo = titulo.toUpperCase();
         this.año = año;
         this.minDuracion = minDuracion;
         this.genero = genero;
         this.sinopsis = sinopsis.toLowerCase();
+        ejemplares = new ArrayList();
     }
 
     /**
@@ -37,7 +38,7 @@ public class Pelicula implements Serializable {
      * @param codigo the codigo to set
      */
     public void setCodigo(String codigo) {
-        this.codigo = codigo;
+        this.codigo = codigo.toUpperCase();
     }
 
     /**
@@ -51,7 +52,7 @@ public class Pelicula implements Serializable {
      * @param titulo the titulo to set
      */
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        this.titulo = titulo.toUpperCase();
     }
 
     /**
@@ -93,7 +94,7 @@ public class Pelicula implements Serializable {
      * @param sinopsis the sinopsis to set
      */
     public void setSinopsis(String sinopsis) {
-        this.sinopsis = sinopsis;
+        this.sinopsis = sinopsis.toLowerCase();
     }
 
     /**
@@ -122,6 +123,11 @@ public class Pelicula implements Serializable {
      */
     public void setEjemplares(ArrayList<Ejemplar> misEjemplares) {
         this.ejemplares = misEjemplares;
+    }
+
+    @Override
+    public String toString() {
+        return titulo;
     }
 
 }

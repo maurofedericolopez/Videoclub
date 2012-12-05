@@ -11,12 +11,12 @@ public class Ejemplar implements Serializable {
 
     private String codigo;
     private EstadoEjemplar estado;
-    private Double precioAlquiler;
+    private Integer creditoAlquiler;
     private Pelicula pelicula;
 
-    public Ejemplar(String codigo, Double precioAlquiler, Pelicula pelicula) {
+    public Ejemplar(String codigo, Integer creditoAlquiler, Pelicula pelicula) {
         this.codigo = codigo;
-        this.precioAlquiler = precioAlquiler;
+        this.creditoAlquiler = creditoAlquiler;
         this.pelicula = pelicula;
         this.estado = EstadoEjemplar.DISPONIBLE;
     }
@@ -74,17 +74,17 @@ public class Ejemplar implements Serializable {
     }
 
     /**
-     * @return the precioAlquiler
+     * @return the creditoAlquiler
      */
-    public Double getPrecioAlquiler() {
-        return precioAlquiler;
+    public Integer getCreditoAlquiler() {
+        return creditoAlquiler;
     }
 
     /**
-     * @param precioAlquiler the precioAlquiler to set
+     * @param creditoAlquiler the creditoAlquiler to set
      */
-    public void setPrecioAlquiler(Double precioAlquiler) {
-        this.precioAlquiler = precioAlquiler;
+    public void setCreditoAlquiler(Integer creditoAlquiler) {
+        this.creditoAlquiler = creditoAlquiler;
     }
 
 }

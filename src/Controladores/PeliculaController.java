@@ -1,13 +1,11 @@
 package Controladores;
 
-import Modelo.Ejemplar;
+import Modelo.*;
 import Modelo.Enumerados.EstadoEjemplar;
-import Modelo.Genero;
-import Modelo.Pelicula;
-import Modelo.Videoclub;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
+import java.util.UUID;
 
 /**
  *
@@ -53,7 +51,7 @@ public class PeliculaController extends Observable {
     }
 
     public Pelicula obtenerPelicula(int index) {
-        return this.modelo.getPeliculas().get(index);
+        return modelo.getPeliculas().get(index);
     }
 
     public Ejemplar obtenerEjemplar(Pelicula pelicula) {
@@ -102,7 +100,7 @@ public class PeliculaController extends Observable {
         notifyObservers();
     }
 
-    public void registrarNuevaGenero(Genero genero) {
+    public void registrarNuevoGenero(Genero genero) {
         modelo.getGeneros().add(genero);
         notificarCambios();
     }
@@ -126,9 +124,14 @@ public class PeliculaController extends Observable {
         notificarCambios();
     }
 
-    public void registrarNuevoEjemplar(Pelicula pelicula, Double precioAlquiler) {
-        String codigoEjemplar = pelicula.getCodigo() + pelicula.getEjemplares().size();
-        pelicula.getEjemplares().add(new Ejemplar(codigoEjemplar, precioAlquiler, pelicula));
+    public void registrarNuevoEjemplar(Pelicula pelicula, Integer creditoAlquiler) {
+        String aleatorio = UUID.randomUUID().toString().toUpperCase();
+        String codigoEjemplar = pelicula.getCodigo() + "-" + aleatorio.substring(aleatorio.length() - 4);
+        while(!codigoEjemplarValido(pelicula, codigoEjemplar)) {
+            aleatorio = UUID.randomUUID().toString().toUpperCase();
+            codigoEjemplar = pelicula.getCodigo() + "-" + aleatorio.substring(aleatorio.length() - 4);
+        }
+        pelicula.getEjemplares().add(new Ejemplar(codigoEjemplar, creditoAlquiler, pelicula));
         notificarCambios();
     }
 
@@ -141,6 +144,54 @@ public class PeliculaController extends Observable {
         while(i.hasNext())
             pelicula.getEjemplares().remove(i.next());
         notificarCambios();
+    }
+
+    public int getGeneroCount() {
+        return modelo.getGeneros().size();
+    }
+
+    public Boolean codigoEjemplarValido(Pelicula pelicula, String codigo) {
+        Iterator<Ejemplar> i = pelicula.getEjemplares().iterator();
+        while(i.hasNext())
+            if(i.next().getCodigo().equals(codigo))
+                return false;
+        return true;
+    }
+
+    public Ejemplar buscarEjemplarPorCodigo(String codigo) throws Exception {
+        Iterator<Pelicula> pelicula = modelo.getPeliculas().iterator();
+        while(pelicula.hasNext()) {
+            Iterator<Ejemplar> ejemplar = pelicula.next().getEjemplares().iterator();
+            while(ejemplar.hasNext()) {
+                Ejemplar e = ejemplar.next();
+                if(e.getCodigo().equals(codigo.toUpperCase()))
+                    return e;
+            }
+        }
+        throw new Exception("No existe ningún ejemplar con el código especificado.");
+    }
+
+    public ArrayList<Ejemplar> obtenerTodosLosEjemplares() {
+        ArrayList<Ejemplar> ejemplares = new ArrayList();
+        Iterator<Pelicula> p = modelo.getPeliculas().iterator();
+        while(p.hasNext()) {
+            Iterator<Ejemplar> e = p.next().getEjemplares().iterator();
+            while(e.hasNext())
+                ejemplares.add(e.next());
+        }
+        return ejemplares;
+    }
+
+    public Double porcentajeDemanda(Ejemplar ejemplar) {
+        Iterator<Alquiler> i = modelo.getListaAlquileres().iterator();
+        Integer cantidad = 0;
+        while(i.hasNext())
+            if(i.next().getEjemplar().getCodigo().equals(ejemplar.getCodigo()))
+                cantidad += 1;
+        if(cantidad != 0)
+            return (modelo.getListaAlquileres().size() / cantidad.doubleValue()) * 100;
+        else
+            return cantidad.doubleValue();
     }
 
 }

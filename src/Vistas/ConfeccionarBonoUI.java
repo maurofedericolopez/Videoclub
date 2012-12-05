@@ -67,6 +67,7 @@ public class ConfeccionarBonoUI extends javax.swing.JPanel {
         etiquetaTitulo.setText("Confeccionar Bono");
         add(etiquetaTitulo, java.awt.BorderLayout.PAGE_START);
 
+        tablaBonos.setAutoCreateRowSorter(true);
         tablaBonos.setModel(new Vistas.modelos.BonoTableModel());
         tablaBonos.getTableHeader().setReorderingAllowed(false);
         jsp.setViewportView(tablaBonos);
