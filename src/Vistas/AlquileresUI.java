@@ -64,10 +64,6 @@ public class AlquileresUI extends javax.swing.JPanel implements Observer {
         jsp = new javax.swing.JScrollPane();
         tablaAlquileresNoDevueltos = new javax.swing.JTable();
         botonDevolverAlquiler = new javax.swing.JButton();
-        etiquetaFiltrar = new javax.swing.JLabel();
-        campoDniClienteFiltro = new javax.swing.JFormattedTextField();
-        botonFiltrarPorDniCliente = new javax.swing.JButton();
-        botonCancelarFiltro = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(750, 380));
         setMinimumSize(new java.awt.Dimension(100, 100));
@@ -173,7 +169,7 @@ public class AlquileresUI extends javax.swing.JPanel implements Observer {
                         .addComponent(botonAlquilar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonCancelarAlquiler)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         solapaRegistrarAlquilerLayout.setVerticalGroup(
             solapaRegistrarAlquilerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,56 +220,26 @@ public class AlquileresUI extends javax.swing.JPanel implements Observer {
             }
         });
 
-        etiquetaFiltrar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        etiquetaFiltrar.setText("Filtrar por DNI del cliente");
-
-        campoDniClienteFiltro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
-
-        botonFiltrarPorDniCliente.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        botonFiltrarPorDniCliente.setText("Filtrar");
-
-        botonCancelarFiltro.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        botonCancelarFiltro.setText("Cancelar Filtro");
-
         javax.swing.GroupLayout solapaAlquileresNoDevueltosLayout = new javax.swing.GroupLayout(solapaAlquileresNoDevueltos);
         solapaAlquileresNoDevueltos.setLayout(solapaAlquileresNoDevueltosLayout);
         solapaAlquileresNoDevueltosLayout.setHorizontalGroup(
             solapaAlquileresNoDevueltosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaAlquileresNoDevueltosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(solapaAlquileresNoDevueltosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(solapaAlquileresNoDevueltosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonDevolverAlquiler))
-                    .addGroup(solapaAlquileresNoDevueltosLayout.createSequentialGroup()
-                        .addComponent(etiquetaFiltrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoDniClienteFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonFiltrarPorDniCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonCancelarFiltro)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jsp, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonDevolverAlquiler)
+                .addGap(14, 14, 14))
         );
         solapaAlquileresNoDevueltosLayout.setVerticalGroup(
             solapaAlquileresNoDevueltosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(solapaAlquileresNoDevueltosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(solapaAlquileresNoDevueltosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(solapaAlquileresNoDevueltosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(campoDniClienteFiltro)
-                        .addComponent(botonFiltrarPorDniCliente)
-                        .addComponent(botonCancelarFiltro))
-                    .addComponent(etiquetaFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(solapaAlquileresNoDevueltosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(solapaAlquileresNoDevueltosLayout.createSequentialGroup()
                         .addComponent(botonDevolverAlquiler)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jsp, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
+                    .addComponent(jsp, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -380,20 +346,16 @@ public class AlquileresUI extends javax.swing.JPanel implements Observer {
     private javax.swing.JButton botonBuscarCliente;
     private javax.swing.JButton botonBuscarEjemplar;
     private javax.swing.JButton botonCancelarAlquiler;
-    private javax.swing.JButton botonCancelarFiltro;
     private javax.swing.JButton botonDevolverAlquiler;
     private javax.swing.JButton botonEliminarEjemplarAlquiler;
-    private javax.swing.JButton botonFiltrarPorDniCliente;
     private javax.swing.JLabel campoCliente;
     private javax.swing.JTextField campoCodigoEjemplar;
     private javax.swing.JFormattedTextField campoDniCliente;
-    private javax.swing.JFormattedTextField campoDniClienteFiltro;
     private javax.swing.JComboBox campoPeriodo;
     private javax.swing.JLabel etiquetaBono;
     private javax.swing.JLabel etiquetaCodigoEjemplar;
     private javax.swing.JLabel etiquetaDias;
     private javax.swing.JLabel etiquetaDniCliente;
-    private javax.swing.JLabel etiquetaFiltrar;
     private javax.swing.JScrollPane jsp;
     private javax.swing.JScrollPane jsp2;
     private javax.swing.JTabbedPane panelConSolapas;

@@ -18,7 +18,6 @@ public class AlquilerController extends Observable {
 
     private Videoclub modelo;
     private ArrayList<Ejemplar> ejemplaresAlquiler;
-    private ArrayList<Alquiler> alquileresNoDevueltos;
     private Cliente cliente;
     private Integer periodo;
 
@@ -152,11 +151,12 @@ public class AlquilerController extends Observable {
 
     public void devolverAlquiler(int indice) throws Exception {
         if(indice >= 0) {
-            Alquiler alquiler = alquileresNoDevueltos.get(indice);
+            Alquiler alquiler = obtenerAlquileresNoDevueltos().get(indice);
             alquiler.cambiarEstado();
             if(new Date().after(alquiler.obtenerFechaDevolucion())) {
                 Controladores.clienteController.calcularSancion(cliente, alquiler.obtenerFechaDevolucion());
             }
+            notificarCambios();
         } else
             throw new Exception("No ha seleccionado ningún ejemplar para devolver.");
     }

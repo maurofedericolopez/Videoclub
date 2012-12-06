@@ -10,7 +10,8 @@ import javax.swing.JOptionPane;
  */
 public class Serializacion {
 
-    private static File archivoModelo = new File("src\\Datos\\archivo_modelo.dat");
+    private String ruta = System.getProperty("user.dir") + "/datos.dat";
+    private File archivoModelo = new File(ruta);
 
     public Videoclub deserializarModelo() throws IOException, ClassNotFoundException {
         if (archivoModelo.exists()) {

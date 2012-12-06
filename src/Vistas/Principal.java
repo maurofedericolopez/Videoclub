@@ -26,7 +26,7 @@ public class Principal extends javax.swing.JFrame {
                 try {
                     new Serializacion().serializarModelo(Controladores.videoclub);
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "No se pudo guardar los cambios realizados.",
+                    JOptionPane.showMessageDialog(null, ex + "No se pudo guardar los cambios realizados.",
                     "Error al guardar", JOptionPane.ERROR_MESSAGE);
                 }
                 System.exit(0);

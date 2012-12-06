@@ -1,7 +1,7 @@
 package Controladores;
 
-import Modelo.*;
 import Modelo.Enumerados.EstadoEjemplar;
+import Modelo.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
@@ -189,7 +189,7 @@ public class PeliculaController extends Observable {
             if(i.next().getEjemplar().getCodigo().equals(ejemplar.getCodigo()))
                 cantidad += 1;
         if(cantidad != 0)
-            return (modelo.getListaAlquileres().size() / cantidad.doubleValue()) * 100;
+            return (cantidad.doubleValue() / modelo.getListaAlquileres().size()) * 100;
         else
             return cantidad.doubleValue();
     }
